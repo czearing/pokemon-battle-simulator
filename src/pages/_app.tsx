@@ -12,19 +12,5 @@ export default function App(props: AppProps) {
       </Head>
       <Component {...pageProps} />
     </>
-
-    // <RendererProvider renderer={pageProps.renderer || createDOMRenderer()}>
-    //   <SSRProvider>
-    //     <AppProvider value={{ setTheme, findTheme }}>
-    //       {isMounted && (
-    //         <Provider theme={theme}>
-    //           <AppContainer>
-    //             <Component {...pageProps} />
-    //           </AppContainer>
-    //         </Provider>
-    //       )}
-    //     </AppProvider>
-    //   </SSRProvider>
-    // </RendererProvider>
   );
 }
