@@ -1,5 +1,5 @@
 import { makeStyles, shorthands, mergeClasses } from "@griffel/react";
-import Fire from "../../public/icons/fire.svg";
+import { PokemonTypeIcon } from "./PokemonTypeIcon";
 
 const useClasses = makeStyles({
   fire: {
@@ -11,7 +11,14 @@ const useClasses = makeStyles({
       backgroundColor: "#D2814C",
     },
   },
+  dark: {
+    backgroundColor: "#9d81ce",
+  },
+  normal: {
+    backgroundColor: "white",
+  },
   button: {
+    cursor: "pointer",
     height: "50px",
     width: "280px",
     fontSize: "15px",
@@ -24,7 +31,6 @@ const useClasses = makeStyles({
     ...shorthands.border("0px"),
     ...shorthands.padding("0px"),
     ...shorthands.borderRadius("999px"),
-    cursor: "pointer",
   },
   ppIndicator: {
     color: "white",
@@ -38,15 +44,13 @@ const useClasses = makeStyles({
     ...shorthands.borderRadius("0px", "999px", "999px", "0px"),
     height: "100%",
   },
-  ppIndicatorTriangle: {
-    width: "0px",
-    height: "0px",
-    ...shorthands.borderLeft("50px solid transparent"),
-    ...shorthands.borderRight("20px solid #000000"),
-    ...shorthands.borderTop("50px solid transparent"),
-  },
   typeIndicator: {
     fontFamily: "Essentiarum Regular",
+  },
+  icon: {
+    ...shorthands.padding("6px"),
+    width: "32px",
+    height: "32px",
   },
 });
 
@@ -62,22 +66,16 @@ type MoveButtonProps = {
   moveValue: string;
 };
 
-// eslint-disable-next-line no-unused-vars
 export const MoveButton = (props: MoveButtonProps) => {
-  const { moveName, moveValue } = props;
+  const { moveValue } = props;
+  const type = "normal";
+
   const classes = useClasses();
-  const mergedRootClasses = mergeClasses(classes.button, classes.fire);
+  const mergedRootClasses = mergeClasses(classes.button, classes[type]);
 
   return (
     <button className={mergedRootClasses} value={moveValue}>
-      <Fire
-        style={{
-          width: "33px",
-          height: "33px",
-          fill: "#FDDC9E",
-          padding: "6px",
-        }}
-      />
+      <PokemonTypeIcon type={type} className={classes.icon} />
       Ember
       <div style={{ flexGrow: "1" }} />
       <div
