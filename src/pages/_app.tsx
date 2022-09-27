@@ -2,6 +2,7 @@ import * as React from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { createDOMRenderer, RendererProvider } from "@griffel/react";
+import "../styles/global.css";
 
 export default function App(props: AppProps) {
   const { Component, pageProps, renderer } = props as any;

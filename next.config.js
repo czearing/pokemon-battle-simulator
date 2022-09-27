@@ -1,9 +1,15 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  images: {
-    domains: ["cdn-images-1.medium.com", "i.ytimg.com", "yt3.ggpht.com"],
-  },
-  env: {
-    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ["@svgr/webpack"],
+    });
+
+    return config;
   },
 };
+
+module.exports = nextConfig;
