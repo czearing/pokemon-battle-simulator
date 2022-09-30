@@ -1,1 +1,1 @@
-export type CombatType = "attack" | "special attack";
+export type CombatType = "attack" | "special";

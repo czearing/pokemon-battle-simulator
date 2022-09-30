@@ -1,6 +1,6 @@
 import { makeStyles, shorthands, mergeClasses } from "@griffel/react";
 import { PokemonTypeIcon } from "./PokemonTypeIcon";
-import { moves } from "../data";
+import { Moves } from "../data";
 
 const useClasses = makeStyles({
   fire: {
@@ -82,19 +82,21 @@ const triangleStyles = {
 
 export const MoveButton = (props: MoveButtonProps) => {
   const { moveValue, movePP } = props;
-  const type = "normal";
 
   const classes = useClasses();
-  const mergedRootClasses = mergeClasses(classes.button, classes[type]);
+  const mergedRootClasses = mergeClasses(
+    classes.button,
+    classes[Moves[moveValue].type]
+  );
 
   return (
     <button className={mergedRootClasses} value={moveValue}>
-      <PokemonTypeIcon type={moves[moveValue].type} className={classes.icon} />
-      {moves[moveValue].name}
+      <PokemonTypeIcon type={Moves[moveValue].type} className={classes.icon} />
+      {Moves[moveValue].name}
       <div style={{ flexGrow: "1" }} />
       <div style={triangleStyles} />
       <div className={classes.ppIndicator}>
-        {movePP}/{moves[moveValue].pp}
+        {movePP}/{Moves[moveValue].pp}
       </div>
     </button>
   );

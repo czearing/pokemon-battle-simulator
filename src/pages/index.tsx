@@ -1,10 +1,11 @@
 import * as React from "react";
-import { MoveButton } from "src/components/MoveButton";
+import { MoveButton, HealthBar } from "src/components";
 
 export const Home = () => {
   return (
     <div>
-      Hello world
+      Enemy
+      <HealthBar currentHealth={10} maxHealth={100} />
       <div
         style={{
           position: "fixed",
@@ -12,7 +13,6 @@ export const Home = () => {
           bottom: "0px",
           right: "0px",
           paddingRight: "10px",
-
           display: "flex",
           flexDirection: "column",
           gap: "10px",
@@ -22,7 +22,7 @@ export const Home = () => {
         }}
       >
         <MoveButton moveValue="tackle" movePP={10} />
-        <MoveButton moveValue="tackle" movePP={10} />
+        <MoveButton moveValue="ember" movePP={2} />
         <MoveButton moveValue="tackle" movePP={10} />
         <MoveButton moveValue="tackle" movePP={10} />
       </div>

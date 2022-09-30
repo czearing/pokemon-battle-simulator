@@ -57,11 +57,26 @@ export const Moves: { [moveValue: string]: MovesData } = {
     category: "attack",
     power: 10,
     accuracy: 100,
-    priority: 1,
+    priority: 0,
     target: "enemy",
     pp: 50,
     // boosts: {
     //   speed: 1,
+    // },
+  },
+  ember: {
+    number: 2,
+    name: "Ember",
+    type: "fire",
+    category: "special",
+    power: 40,
+    accuracy: 100,
+    priority: 0,
+    target: "enemy",
+    pp: 25,
+    // secondary: {
+    //   chance: 10,
+    //   status: "brn",
     // },
   },
 };
