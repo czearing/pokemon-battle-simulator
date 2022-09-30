@@ -1,15 +1,10 @@
 import { makeStyles, shorthands, mergeClasses } from "@griffel/react";
 import { PokemonTypeIcon } from "./PokemonTypeIcon";
+import { moves } from "../data";
 
 const useClasses = makeStyles({
   fire: {
     backgroundColor: "#F49658",
-    "&:hover": {
-      backgroundColor: "#E08A51",
-    },
-    "&:active": {
-      backgroundColor: "#D2814C",
-    },
   },
   dark: {
     backgroundColor: "#9d81ce",
@@ -17,10 +12,17 @@ const useClasses = makeStyles({
   normal: {
     backgroundColor: "white",
   },
+  fighting: {
+    backgroundColor: "#d85b93",
+  },
+  flying: {
+    backgroundColor: "#934b5df",
+  },
   button: {
     cursor: "pointer",
+    boxSizing: "border-box",
     height: "50px",
-    width: "280px",
+    width: "300px",
     fontSize: "15px",
     transitionProperty: "background, box-shadow",
     textAlign: "left",
@@ -28,9 +30,13 @@ const useClasses = makeStyles({
     boxShadow:
       "rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px",
     alignItems: "center",
+    ...shorthands.outline("0px", "solid", "black"),
     ...shorthands.border("0px"),
     ...shorthands.padding("0px"),
     ...shorthands.borderRadius("999px"),
+    "&:hover": {
+      ...shorthands.outline("4px", "solid", "black"),
+    },
   },
   ppIndicator: {
     color: "white",
@@ -56,9 +62,9 @@ const useClasses = makeStyles({
 
 type MoveButtonProps = {
   /**
-   * The name of the Pokemon move to display on the button.
+   * The number of remaining uses for the Pokemon move.
    */
-  moveName: string;
+  movePP: number;
 
   /**
    * The value of the Pokemon move. Used for callback on press.
@@ -66,8 +72,16 @@ type MoveButtonProps = {
   moveValue: string;
 };
 
+const triangleStyles = {
+  width: "0px",
+  height: "0px",
+  borderLeft: "50px solid transparent",
+  borderRight: "20px solid  #000000",
+  borderTop: "50px solid transparent",
+};
+
 export const MoveButton = (props: MoveButtonProps) => {
-  const { moveValue } = props;
+  const { moveValue, movePP } = props;
   const type = "normal";
 
   const classes = useClasses();
@@ -75,19 +89,13 @@ export const MoveButton = (props: MoveButtonProps) => {
 
   return (
     <button className={mergedRootClasses} value={moveValue}>
-      <PokemonTypeIcon type={type} className={classes.icon} />
-      Ember
+      <PokemonTypeIcon type={moves[moveValue].type} className={classes.icon} />
+      {moves[moveValue].name}
       <div style={{ flexGrow: "1" }} />
-      <div
-        style={{
-          width: "0px",
-          height: "0px",
-          borderLeft: "50px solid transparent",
-          borderRight: "20px solid  #000000",
-          borderTop: "50px solid transparent",
-        }}
-      />
-      <div className={classes.ppIndicator}>25/25</div>
+      <div style={triangleStyles} />
+      <div className={classes.ppIndicator}>
+        {movePP}/{moves[moveValue].pp}
+      </div>
     </button>
   );
 };

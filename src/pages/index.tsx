@@ -21,10 +21,10 @@ export const Home = () => {
           justifyContent: "right",
         }}
       >
-        <MoveButton moveName="Ember" moveValue="test" />
-        <MoveButton moveName="Ember" moveValue="test" />
-        <MoveButton moveName="Ember" moveValue="test" />
-        <MoveButton moveName="Ember" moveValue="test" />
+        <MoveButton moveValue="tackle" movePP={10} />
+        <MoveButton moveValue="tackle" movePP={10} />
+        <MoveButton moveValue="tackle" movePP={10} />
+        <MoveButton moveValue="tackle" movePP={10} />
       </div>
     </div>
   );
