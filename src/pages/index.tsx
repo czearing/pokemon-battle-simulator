@@ -11,7 +11,36 @@ export const Home = () => {
         backgroundColor: "grey",
       }}
     >
-      <BattleInfoBar currentHealth={60} maxHealth={100} />
+      <div
+        style={{
+          position: "fixed",
+          bottom: "0px",
+          left: "0px",
+        }}
+      >
+        <BattleInfoBar
+          name="Tyranitar"
+          target="player"
+          level={50}
+          currentHealth={60}
+          maxHealth={100}
+        />
+      </div>
+      <div
+        style={{
+          position: "fixed",
+          top: "0px",
+          right: "0px",
+        }}
+      >
+        <BattleInfoBar
+          name="Lucario"
+          target="enemy"
+          level={50}
+          currentHealth={20}
+          maxHealth={80}
+        />
+      </div>
       <div
         style={{
           position: "fixed",
