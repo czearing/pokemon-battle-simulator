@@ -2,3 +2,7 @@
   font-family: "Essentiarum Regular";
   src: url("/fonts/Essentiarum Regular.ttf");
 }
+
+body {
+  margin: 0px
+}

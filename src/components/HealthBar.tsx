@@ -18,7 +18,19 @@ const useHealthBarStyles = makeStyles({
   },
 });
 
-export const HealthBar = (props) => {
+type HealthBarProps = {
+  /**
+   * The current health for the Pokemon.
+   */
+  currentHealth: number;
+
+  /**
+   * The max health for the Pokemon.
+   */
+  maxHealth: number;
+};
+
+export const HealthBar = (props: HealthBarProps) => {
   const { currentHealth, maxHealth } = props;
   const healthBarStyles = useHealthBarStyles();
   const percent = (currentHealth / maxHealth) * 100;
@@ -26,7 +38,7 @@ export const HealthBar = (props) => {
   const width = {
     width: percent + "%",
     backgroundColor:
-      (percent <= 10 && "#eb6165") || (percent <= 50 && "#edc030") || "#24f51a",
+      (percent <= 10 && "#eb6165") || (percent <= 50 && "#edc030") || "#29dd26",
   };
 
   return (

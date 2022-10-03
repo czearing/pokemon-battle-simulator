@@ -1,11 +1,17 @@
 import * as React from "react";
-import { MoveButton, HealthBar } from "src/components";
+import { MoveButton, BattleInfoBar } from "src/components";
 
 export const Home = () => {
   return (
-    <div>
-      Enemy
-      <HealthBar currentHealth={10} maxHealth={100} />
+    <div
+      style={{
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        backgroundColor: "grey",
+      }}
+    >
+      <BattleInfoBar currentHealth={60} maxHealth={100} />
       <div
         style={{
           position: "fixed",

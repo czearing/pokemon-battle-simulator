@@ -50,9 +50,6 @@ const useClasses = makeStyles({
     ...shorthands.borderRadius("0px", "999px", "999px", "0px"),
     height: "100%",
   },
-  typeIndicator: {
-    fontFamily: "Essentiarum Regular",
-  },
   icon: {
     ...shorthands.padding("6px"),
     width: "32px",
